@@ -32,6 +32,7 @@
                     v-for="(item, index) in slides" 
                     class="thumb" 
                     :class="sliderPosition === index ? 'active' : ''"
+                    @click="onThumbsClick(index)"
                     >
                         <img :src="item.image" alt="Svezia"/>
                     </div>

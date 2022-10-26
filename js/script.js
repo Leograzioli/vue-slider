@@ -48,6 +48,11 @@ createApp({
             } else {
                 this.sliderPosition = 0
             }
+        },
+        onThumbsClick(index) {
+            this.sliderPosition = index
         }
-    }
+    },
+    
+
 }).mount("#app")
