@@ -32,7 +32,7 @@ createApp({
             ],
             sliderPosition: 0, // initial position 
             autoPlay: "", 
-            isAutoPlayDown: false
+            isAutoPlayDown: true
         }
     }, 
     methods: {
@@ -60,14 +60,9 @@ createApp({
             this.sliderPosition = clickedIndex
         },
 
-        //to stop autoplay on mouse hover
-        mouseOn() {
-            clearInterval(this.autoPlay)
-        },
+        //to decide the direction os autoplay
+        autoPlayDirection() {
 
-        //to reset autoplay on mouse off
-        mouseOff() {
-            clearInterval(this.autoPlay)
             if (this.isAutoPlayDown) {
                 //to set auto play 
                 this.autoPlay = setInterval(() => {
@@ -92,61 +87,23 @@ createApp({
             } 
         },
 
+        //to stop autoplay on mouse hover
+        mouseOn() {
+            clearInterval(this.autoPlay)
+        },
+
         //to revert autoplay direction
         revertAutoPlay() {
             clearInterval(this.autoPlay)
             this.isAutoPlayDown = !this.isAutoPlayDown
 
-            if (this.isAutoPlayDown) {
-                //to set auto play 
-                this.autoPlay = setInterval(() => {
-        
-                    if(this.sliderPosition < this.slides.length - 1) {
-                        this.sliderPosition++
-                    } else {
-                        this.sliderPosition = 0
-                    }
-        
-                }, 3000); 
-            } else if (this.isAutoPlayDown === false) {
-    
-                this.autoPlay = setInterval(() => {
-                    if(this.sliderPosition > 0)
-                    this.sliderPosition--
-                    else {
-                        this.sliderPosition = 4
-                    }
-    
-                }, 3000)
-            }
+            this.autoPlayDirection()
             
         }
     },
     created: function() {
 
-        if (this.isAutoPlayDown) {
-            //to set auto play 
-            this.autoPlay = setInterval(() => {
-    
-                if(this.sliderPosition < this.slides.length - 1) {
-                    this.sliderPosition++
-                } else {
-                    this.sliderPosition = 0
-                }
-    
-            }, 3000); 
-        } else if (this.isAutoPlayDown === false) {
-
-            this.autoPlay = setInterval(() => {
-                if(this.sliderPosition > 0)
-                this.sliderPosition--
-                else {
-                    this.sliderPosition = 4
-                }
-
-            }, 3000)
-        }
-
+        this.autoPlayDirection()
     }
 
 }).mount("#app")

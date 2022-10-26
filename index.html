@@ -18,7 +18,7 @@
             <div class="slider-wrapper" tabindex="0">
 
                 <!-- mouse hover vue -->
-                <div @mouseover="mouseOn()" @mouseleave="mouseOff()" class="item">
+                <div @mouseover="mouseOn()" @mouseleave="autoPlayDirection()" class="item">
 
                     <!-- image from vue -->
                     <img :src="slides[sliderPosition].image" alt="Svezia" />
