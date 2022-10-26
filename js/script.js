@@ -30,7 +30,24 @@ createApp({
                     title: 'Paradise',
                     text: 'Et temporibus voluptatum suscipit tempore aliquid deleniti aut veniam inventore eligendi ex ad ullam, cumque provident totam omnis.',
                 }
-            ]
+            ],
+            sliderPosition: 0
+        }
+    }, 
+    methods: {
+        sliderUp() {
+            if(this.sliderPosition > 0)
+            this.sliderPosition--
+            else {
+                this.sliderPosition = 4
+            }
+        },
+        sliderDown() {
+            if(this.sliderPosition < this.slides.length - 1) {
+                this.sliderPosition++
+            } else {
+                this.sliderPosition = 0
+            }
         }
     }
 }).mount("#app")
