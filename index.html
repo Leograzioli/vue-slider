@@ -18,8 +18,8 @@
             <div class="slider-wrapper" tabindex="0">
 
                 <div 
-                @mouseover="mouseHover = true"
-                @mouseleave="mouseHover = false"
+                @mouseover="mouseOn()"
+                @mouseleave="mouseOff()"
                 class="item">
                     <img :src="slides[sliderPosition].image" alt="Svezia" />
                     <div class="text">

@@ -3,7 +3,6 @@ const {createApp} = Vue;
 createApp({
     data() {
         return {
-
             slides: [
                 {
                     image: 'img/01.jpg',
@@ -33,7 +32,7 @@ createApp({
             ],
             sliderPosition: 0,
             autoPlay: "",
-            mouseHover: false
+            mouseHover: false,
         }
     }, 
     methods: {
@@ -54,12 +53,10 @@ createApp({
         onThumbsClick(clickedIndex) {
             this.sliderPosition = clickedIndex
         },
-
-
-    },
-    created: function () {
-        
-        if (this.mouseHover === false) {
+        mouseOn() {
+            clearInterval(this.autoPlay)
+        },
+        mouseOff() {
             this.autoPlay = setInterval(() => {
 
                 if(this.sliderPosition < this.slides.length - 1) {
@@ -67,10 +64,22 @@ createApp({
                 } else {
                     this.sliderPosition = 0
                 }
-            }, 3000); 
-        } else {
-             clearInterval(this.autoPlay);
-        }
-    }
     
+            }, 3000); 
+        }
+    },
+    created: function() {
+
+        this.autoPlay = setInterval(() => {
+
+            if(this.sliderPosition < this.slides.length - 1) {
+                this.sliderPosition++
+            } else {
+                this.sliderPosition = 0
+            }
+
+        }, 3000); 
+        
+    }
+
 }).mount("#app")
