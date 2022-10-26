@@ -64,19 +64,12 @@ createApp({
         autoPlayDirection() {
 
             if (this.isAutoPlayDown) {
-                //to set auto play 
-                this.autoPlay = setInterval(() => {
-        
-                    this.sliderDown()
-        
-                }, 3000); 
+
+                this.autoPlay = setInterval(this.sliderDown, 3000); 
+                
             } else if (this.isAutoPlayDown === false) {
     
-                this.autoPlay = setInterval(() => {
-                    
-                    this.sliderUp()
-    
-                }, 3000)
+                this.autoPlay = setInterval(this.sliderUp, 3000)
             } 
         },
 
@@ -89,13 +82,11 @@ createApp({
         revertAutoPlay() {
             clearInterval(this.autoPlay)
             this.isAutoPlayDown = !this.isAutoPlayDown
-
             this.autoPlayDirection()
-            
         }
+
     },
     created: function() {
-
         this.autoPlayDirection()
     }
 
