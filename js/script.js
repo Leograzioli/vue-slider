@@ -67,21 +67,14 @@ createApp({
                 //to set auto play 
                 this.autoPlay = setInterval(() => {
         
-                    if(this.sliderPosition < this.slides.length - 1) {
-                        this.sliderPosition++
-                    } else {
-                        this.sliderPosition = 0
-                    }
+                    this.sliderDown()
         
                 }, 3000); 
             } else if (this.isAutoPlayDown === false) {
     
                 this.autoPlay = setInterval(() => {
-                    if(this.sliderPosition > 0)
-                    this.sliderPosition--
-                    else {
-                        this.sliderPosition = 4
-                    }
+                    
+                    this.sliderUp()
     
                 }, 3000)
             } 
