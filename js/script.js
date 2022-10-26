@@ -31,7 +31,9 @@ createApp({
                     text: 'Et temporibus voluptatum suscipit tempore aliquid deleniti aut veniam inventore eligendi ex ad ullam, cumque provident totam omnis.',
                 }
             ],
-            sliderPosition: 0
+            sliderPosition: 0,
+            autoPlay: "",
+            mouseHover: false
         }
     }, 
     methods: {
@@ -51,16 +53,24 @@ createApp({
         },
         onThumbsClick(clickedIndex) {
             this.sliderPosition = clickedIndex
-        }
+        },
+
+
     },
     created: function () {
-        setInterval(() => {
-            if(this.sliderPosition < this.slides.length - 1) {
-                this.sliderPosition++
-            } else {
-                this.sliderPosition = 0
-            }
-        }, 3000);
+        
+        if (this.mouseHover === false) {
+            this.autoPlay = setInterval(() => {
+
+                if(this.sliderPosition < this.slides.length - 1) {
+                    this.sliderPosition++
+                } else {
+                    this.sliderPosition = 0
+                }
+            }, 3000); 
+        } else {
+             clearInterval(this.autoPlay);
+        }
     }
     
 }).mount("#app")
