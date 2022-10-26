@@ -72,6 +72,19 @@
     bottom: 0;
 }
 
+.ms_buttons {
+    text-align: center;
+}
+.invert-btn {
+    margin-top: 10px;
+    margin-right: 10px;
+}
+
+.invert-btn,
+.stop-btn {
+    cursor: pointer;
+}
+
 /*
 EXTRA: in questo esempio gli accordion vengono creati
 usando 2 bordi di un quadratino ruotato di 45 gradi

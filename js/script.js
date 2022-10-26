@@ -32,6 +32,7 @@ createApp({
             ],
             sliderPosition: 0, // initial position 
             autoPlay: "", 
+            isAutoPlayDown: false
         }
     }, 
     methods: {
@@ -66,8 +67,67 @@ createApp({
 
         //to reset autoplay on mouse off
         mouseOff() {
-            this.autoPlay = setInterval(() => {
+            clearInterval(this.autoPlay)
+            if (this.isAutoPlayDown) {
+                //to set auto play 
+                this.autoPlay = setInterval(() => {
+        
+                    if(this.sliderPosition < this.slides.length - 1) {
+                        this.sliderPosition++
+                    } else {
+                        this.sliderPosition = 0
+                    }
+        
+                }, 3000); 
+            } else if (this.isAutoPlayDown === false) {
+    
+                this.autoPlay = setInterval(() => {
+                    if(this.sliderPosition > 0)
+                    this.sliderPosition--
+                    else {
+                        this.sliderPosition = 4
+                    }
+    
+                }, 3000)
+            } 
+        },
 
+        //to revert autoplay direction
+        revertAutoPlay() {
+            clearInterval(this.autoPlay)
+            this.isAutoPlayDown = !this.isAutoPlayDown
+
+            if (this.isAutoPlayDown) {
+                //to set auto play 
+                this.autoPlay = setInterval(() => {
+        
+                    if(this.sliderPosition < this.slides.length - 1) {
+                        this.sliderPosition++
+                    } else {
+                        this.sliderPosition = 0
+                    }
+        
+                }, 3000); 
+            } else if (this.isAutoPlayDown === false) {
+    
+                this.autoPlay = setInterval(() => {
+                    if(this.sliderPosition > 0)
+                    this.sliderPosition--
+                    else {
+                        this.sliderPosition = 4
+                    }
+    
+                }, 3000)
+            }
+            
+        }
+    },
+    created: function() {
+
+        if (this.isAutoPlayDown) {
+            //to set auto play 
+            this.autoPlay = setInterval(() => {
+    
                 if(this.sliderPosition < this.slides.length - 1) {
                     this.sliderPosition++
                 } else {
@@ -75,20 +135,17 @@ createApp({
                 }
     
             }, 3000); 
+        } else if (this.isAutoPlayDown === false) {
+
+            this.autoPlay = setInterval(() => {
+                if(this.sliderPosition > 0)
+                this.sliderPosition--
+                else {
+                    this.sliderPosition = 4
+                }
+
+            }, 3000)
         }
-    },
-    created: function() {
-
-        //to set auto play 
-        this.autoPlay = setInterval(() => {
-
-            if(this.sliderPosition < this.slides.length - 1) {
-                this.sliderPosition++
-            } else {
-                this.sliderPosition = 0
-            }
-
-        }, 3000); 
 
     }
 
