@@ -49,8 +49,8 @@ createApp({
                 this.sliderPosition = 0
             }
         },
-        onThumbsClick(index) {
-            this.sliderPosition = index
+        onThumbsClick(clickedIndex) {
+            this.sliderPosition = clickedIndex
         }
     },
     
