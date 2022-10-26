@@ -32,7 +32,8 @@ createApp({
             ],
             sliderPosition: 0, // initial position 
             autoPlay: "", 
-            isAutoPlayDown: true
+            isAutoPlayDown: true,
+            intervalTime: 3000
         }
     }, 
     methods: {
@@ -42,7 +43,7 @@ createApp({
             if(this.sliderPosition > 0)
             this.sliderPosition--
             else {
-                this.sliderPosition = 4
+                this.sliderPosition = (this.slides.length - 1)
             }
         },
 
@@ -65,16 +66,16 @@ createApp({
 
             if (this.isAutoPlayDown) {
 
-                this.autoPlay = setInterval(this.sliderDown, 3000); 
+                this.autoPlay = setInterval(this.sliderDown, this.intervalTime); 
                 
             } else if (this.isAutoPlayDown === false) {
     
-                this.autoPlay = setInterval(this.sliderUp, 3000)
+                this.autoPlay = setInterval(this.sliderUp, this.intervalTime)
             } 
         },
 
         //to stop autoplay on mouse hover
-        mouseOn() {
+        clearInt() {
             clearInterval(this.autoPlay)
         },
 

@@ -18,10 +18,17 @@
             <div class="slider-wrapper" tabindex="0">
 
                 <!-- mouse hover vue -->
-                <div @mouseover="mouseOn()" @mouseleave="autoPlayDirection()" class="item">
+                <div 
+                @mouseover="clearInt()" 
+                @mouseleave="autoPlayDirection()" 
+                class="item"
+                >
 
                     <!-- image from vue -->
-                    <img :src="slides[sliderPosition].image" alt="Svezia" />
+                    <img 
+                    :src="slides[sliderPosition].image" 
+                    :alt="slides[sliderPosition].title" 
+                    />
 
                     <!-- text from vue  -->
                     <div class="text">
@@ -43,14 +50,14 @@
                     :class="sliderPosition === index ? 'active' : ''"
                     @click="onThumbsClick(index)"
                     >
-                        <img :src="item.image" alt="Svezia"/>
+                        <img :src="item.image" alt="item.title"/>
                     </div>
                     
                 </div>
 
                 <div class="ms_buttons">
                     <button @click="revertAutoPlay" class="invert-btn">revert flow order</button>
-                    <button @click="mouseOn" class="stop-btn">Stop Auto Play</button>
+                    <button @click="clearInt" class="stop-btn">Stop Auto Play</button>
                 </div>
 
             </div>
