@@ -4,7 +4,7 @@
     <meta charset="UTF-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Carosello News</title>
+    <title>Carosello from Leo</title>
     <link rel="stylesheet" href="css/style.css"/>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 
@@ -17,29 +17,34 @@
         <div class="container" >
             <div class="slider-wrapper" tabindex="0">
 
-                <div 
-                @mouseover="mouseOn()"
-                @mouseleave="mouseOff()"
-                class="item">
+                <!-- mouse hover vue -->
+                <div @mouseover="mouseOn()" @mouseleave="mouseOff()" class="item">
+
+                    <!-- image from vue -->
                     <img :src="slides[sliderPosition].image" alt="Svezia" />
+
+                    <!-- text from vue  -->
                     <div class="text">
                         <h3>{{ slides[sliderPosition].title }}</h3>
                         <p>{{ slides[sliderPosition].text }}</p>
                     </div>
                 </div>
 
+                <!-- thumbs -->
                 <div class="thumbs">
+
+                    <!-- buttons act thumbs -->
                     <div @click="sliderUp" class="prev"></div>
                     <div @click="sliderDown" class="next"></div>
-                    <div 
-                    v-for="(item, index) in slides" 
+                    
+                    <!-- loop to add img thumbs  -->
+                    <div v-for="(item, index) in slides" 
                     class="thumb" 
                     :class="sliderPosition === index ? 'active' : ''"
                     @click="onThumbsClick(index)"
                     >
                         <img :src="item.image" alt="Svezia"/>
                     </div>
-                    
                     
                 </div>
 

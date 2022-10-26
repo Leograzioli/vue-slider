@@ -30,12 +30,13 @@ createApp({
                     text: 'Et temporibus voluptatum suscipit tempore aliquid deleniti aut veniam inventore eligendi ex ad ullam, cumque provident totam omnis.',
                 }
             ],
-            sliderPosition: 0,
-            autoPlay: "",
-            mouseHover: false,
+            sliderPosition: 0, // initial position 
+            autoPlay: "", 
         }
     }, 
     methods: {
+
+        //to set down the slider position
         sliderUp() {
             if(this.sliderPosition > 0)
             this.sliderPosition--
@@ -43,6 +44,8 @@ createApp({
                 this.sliderPosition = 4
             }
         },
+
+        //to set up the slider position
         sliderDown() {
             if(this.sliderPosition < this.slides.length - 1) {
                 this.sliderPosition++
@@ -50,12 +53,18 @@ createApp({
                 this.sliderPosition = 0
             }
         },
+
+        //set slider position on click
         onThumbsClick(clickedIndex) {
             this.sliderPosition = clickedIndex
         },
+
+        //to stop autoplay on mouse hover
         mouseOn() {
             clearInterval(this.autoPlay)
         },
+
+        //to reset autoplay on mouse off
         mouseOff() {
             this.autoPlay = setInterval(() => {
 
@@ -70,6 +79,7 @@ createApp({
     },
     created: function() {
 
+        //to set auto play 
         this.autoPlay = setInterval(() => {
 
             if(this.sliderPosition < this.slides.length - 1) {
@@ -79,7 +89,7 @@ createApp({
             }
 
         }, 3000); 
-        
+
     }
 
 }).mount("#app")
