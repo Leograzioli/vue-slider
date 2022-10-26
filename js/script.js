@@ -53,6 +53,14 @@ createApp({
             this.sliderPosition = clickedIndex
         }
     },
+    created: function () {
+        setInterval(() => {
+            if(this.sliderPosition < this.slides.length - 1) {
+                this.sliderPosition++
+            } else {
+                this.sliderPosition = 0
+            }
+        }, 3000);
+    }
     
-
 }).mount("#app")
