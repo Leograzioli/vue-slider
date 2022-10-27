@@ -22,6 +22,8 @@
             @mouseleave="setAutoPlayDirection()" 
             @focus="clearInt()"
             @blur="setAutoPlayDirection()"
+            @keyup.up="sliderUp"
+            @keyup.down="sliderDown"
             >
 
                 <!-- mouse hover vue -->
