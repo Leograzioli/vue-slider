@@ -62,7 +62,7 @@ createApp({
         },
 
         //to decide the direction os autoplay
-        autoPlayDirection() {
+        setAutoPlayDirection() {
 
             if (this.isAutoPlayDown) {
 
@@ -83,12 +83,12 @@ createApp({
         revertAutoPlay() {
             clearInterval(this.autoPlay)
             this.isAutoPlayDown = !this.isAutoPlayDown
-            this.autoPlayDirection()
+            this.setAutoPlayDirection()
         }
 
     },
     created: function() {
-        this.autoPlayDirection()
+        this.setAutoPlayDirection()
     }
 
 }).mount("#app")
