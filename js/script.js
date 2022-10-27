@@ -40,20 +40,12 @@ createApp({
 
         //to set down the slider position
         sliderUp() {
-            if(this.sliderPosition > 0)
-            this.sliderPosition--
-            else {
-                this.sliderPosition = (this.slides.length - 1)
-            }
+            (this.sliderPosition > 0) ? this.sliderPosition-- : this.sliderPosition = (this.slides.length - 1)
         },
 
         //to set up the slider position
         sliderDown() {
-            if(this.sliderPosition < this.slides.length - 1) {
-                this.sliderPosition++
-            } else {
-                this.sliderPosition = 0
-            }
+            (this.sliderPosition < this.slides.length - 1) ? this.sliderPosition++ : this.sliderPosition = 0   
         },
 
         //set slider position on click
