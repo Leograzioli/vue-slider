@@ -15,14 +15,17 @@
     <div id="app">
 
         <div class="container" >
-            <div class="slider-wrapper" tabindex="0">
+            <div 
+            class="slider-wrapper" 
+            tabindex="0"
+            @mouseover="clearInt()" 
+            @mouseleave="setAutoPlayDirection()" 
+            @focus="clearInt()"
+            @blur="setAutoPlayDirection()"
+            >
 
                 <!-- mouse hover vue -->
-                <div 
-                @mouseover="clearInt()" 
-                @mouseleave="setAutoPlayDirection()" 
-                class="item"
-                >
+                <div class="item">
 
                     <!-- image from vue -->
                     <img 

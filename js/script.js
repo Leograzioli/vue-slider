@@ -33,7 +33,7 @@ createApp({
             sliderPosition: 0, // initial position 
             autoPlay: "", 
             isAutoPlayDown: true,
-            intervalTime: 3000
+            intervalTime: 1000
         }
     }, 
     methods: {
